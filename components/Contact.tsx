@@ -20,7 +20,6 @@ export default function Contact() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    // EmailJS integration placeholder — replace with actual service/template IDs
     await new Promise((r) => setTimeout(r, 1200));
     setLoading(false);
     setSubmitted(true);
@@ -223,7 +222,7 @@ export default function Contact() {
             <div className="overflow-hidden rounded-2xl shadow-lg">
               <iframe
                 title="Hotel Surya Beach Inn on Google Maps"
-                src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.5!2d${HOTEL.coordinates.lng}!3d${HOTEL.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDQ3JzUzLjkiTiA4NcKwNDknMjguMiJF!5e0!3m2!1sen!2sin!4v1`}
+                src={HOTEL.mapsEmbedUrl}
                 className="h-48 w-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

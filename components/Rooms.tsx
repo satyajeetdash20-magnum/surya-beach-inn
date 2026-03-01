@@ -1,9 +1,56 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Wind, Sun, Volume2 } from "lucide-react";
 import { ROOMS, HOTEL } from "@/lib/constants";
+import type { RoomEnvironment } from "@/lib/constants";
 import RoomAmbiancePreview from "./RoomAmbiancePreview";
+
+function LevelBar({ level, maxLevel }: { level: number; maxLevel: number }) {
+  return (
+    <div className="flex gap-1">
+      {Array.from({ length: maxLevel }).map((_, i) => (
+        <div
+          key={i}
+          className={`h-2 w-5 rounded-full ${
+            i < level ? "bg-ocean" : "bg-gray-200"
+          }`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function EnvironmentIndicators({ env }: { env: RoomEnvironment }) {
+  const indicators = [
+    { icon: Wind, title: "Ocean Breeze", ...env.breeze, extra: null },
+    { icon: Sun, title: "Natural Lighting", ...env.lighting, extra: null },
+    { icon: Volume2, title: "Noise Level", ...env.noise, extra: env.noise.dbRange },
+  ];
+
+  return (
+    <div className="mt-4 space-y-3 rounded-lg bg-gray-soft p-4">
+      <p className="font-heading text-xs font-semibold uppercase tracking-wider text-dark/50">
+        Room Environment
+      </p>
+      {indicators.map((ind) => (
+        <div key={ind.title} className="flex items-center gap-3">
+          <ind.icon size={16} className="shrink-0 text-ocean/70" />
+          <div className="flex-1">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-dark/70">{ind.title}</span>
+              <span className="text-xs text-dark/50">
+                {ind.label}
+                {ind.extra && ` · ${ind.extra}`}
+              </span>
+            </div>
+            <LevelBar level={ind.level} maxLevel={ind.maxLevel} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function Rooms() {
   return (
@@ -63,14 +110,19 @@ export default function Rooms() {
                     </span>
                   ))}
                 </div>
-                <a
-                  href={HOTEL.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block rounded-full bg-ocean px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ocean-dark"
-                >
-                  Book This Room
-                </a>
+
+                <EnvironmentIndicators env={room.environment} />
+
+                <div className="mt-5">
+                  <a
+                    href={HOTEL.bookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block rounded-full bg-ocean px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ocean-dark"
+                  >
+                    Book This Room
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}

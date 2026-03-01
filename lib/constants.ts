@@ -14,7 +14,10 @@ export const HOTEL = {
   totalRooms: 29,
   bookingUrl:
     "https://www.makemytrip.com/hotels/hotel_surya_beach_inn-details-puri.html",
-  coordinates: { lat: 19.7983, lng: 85.8245 },
+  coordinates: { lat: 19.7992269, lng: 85.8340403 },
+  mapsUrl: "https://maps.app.goo.gl/7wnEbPQp6ATkmmqC6",
+  mapsEmbedUrl:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.5!2d85.8314654!3d19.7992319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19c5a220c7203b%3A0xf74b38d8d688af5d!2sHotel%20Surya%20Beach%20Inn!5e0!3m2!1sen!2sin!4v1",
   social: {
     facebook: "https://www.facebook.com/",
     instagram: "https://www.instagram.com/",
@@ -30,6 +33,26 @@ export const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
+// Replace these with your real hotel media assets when available.
+export const PLACEHOLDER_MEDIA = {
+  heroVideo:
+    "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+  heroPoster:
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80",
+  aboutExterior:
+    "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&q=80",
+  roomStandard:
+    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
+  roomDeluxe:
+    "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
+} as const;
+
+export interface RoomEnvironment {
+  breeze: { level: number; maxLevel: number; label: string };
+  lighting: { level: number; maxLevel: number; label: string };
+  noise: { level: number; maxLevel: number; label: string; dbRange: string };
+}
+
 export interface Room {
   id: string;
   name: string;
@@ -37,6 +60,7 @@ export interface Room {
   priceRange: string;
   features: string[];
   image: string;
+  environment: RoomEnvironment;
 }
 
 export const ROOMS: Room[] = [
@@ -47,8 +71,12 @@ export const ROOMS: Room[] = [
       "Comfortable and spacious rooms with natural light, perfect for couples and solo travelers. Enjoy a restful stay with all essential amenities and a private balcony overlooking the garden.",
     priceRange: "₹2,000 – ₹3,000 / night",
     features: ["AC", "TV", "Free WiFi", "Balcony View", "Room Service", "Fan"],
-    image:
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
+    image: PLACEHOLDER_MEDIA.roomStandard,
+    environment: {
+      breeze: { level: 3, maxLevel: 5, label: "Moderate" },
+      lighting: { level: 3, maxLevel: 5, label: "Clear" },
+      noise: { level: 3, maxLevel: 5, label: "Soothing", dbRange: "45 – 50 dB" },
+    },
   },
   {
     id: "deluxe",
@@ -65,8 +93,12 @@ export const ROOMS: Room[] = [
       "Room Service",
       "Balcony",
     ],
-    image:
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
+    image: PLACEHOLDER_MEDIA.roomDeluxe,
+    environment: {
+      breeze: { level: 4, maxLevel: 5, label: "Fresh" },
+      lighting: { level: 5, maxLevel: 5, label: "Panoramic" },
+      noise: { level: 2, maxLevel: 5, label: "Whisper", dbRange: "40 – 45 dB" },
+    },
   },
 ];
 

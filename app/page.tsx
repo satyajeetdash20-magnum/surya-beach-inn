@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Rooms from "@/components/Rooms";
-import EnvironmentIndicators from "@/components/EnvironmentIndicators";
 import Gallery from "@/components/Gallery";
 import VideoTour from "@/components/VideoTour";
 import Amenities from "@/components/Amenities";
@@ -20,7 +19,6 @@ export default function Home() {
         <Hero />
         <About />
         <Rooms />
-        <EnvironmentIndicators />
         <Gallery />
         <VideoTour />
         <Amenities />

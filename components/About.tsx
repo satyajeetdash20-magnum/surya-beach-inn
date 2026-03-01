@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Building2, Footprints, CalendarDays, Users } from "lucide-react";
-import { HOTEL } from "@/lib/constants";
+import { HOTEL, PLACEHOLDER_MEDIA } from "@/lib/constants";
 
 const stats = [
   { icon: Building2, value: `${HOTEL.totalRooms}`, label: "Rooms" },
@@ -27,7 +27,7 @@ export default function About() {
           >
             <div className="overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&q=80"
+                src={PLACEHOLDER_MEDIA.aboutExterior}
                 alt="Hotel Surya Beach Inn exterior"
                 width={700}
                 height={500}
