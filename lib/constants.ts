@@ -36,7 +36,7 @@ export const NAV_LINKS = [
 // Replace these with your real hotel media assets when available.
 export const PLACEHOLDER_MEDIA = {
   heroVideo:
-    "https://assets.mixkit.co/videos/25995/25995-720.mp4",
+    "https://cdn.pixabay.com/video/2022/11/22/140111-774507949_large.mp4",
   heroPoster:
     "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1920&q=80",
   aboutExterior:
