@@ -36,9 +36,9 @@ export const NAV_LINKS = [
 // Replace these with your real hotel media assets when available.
 export const PLACEHOLDER_MEDIA = {
   heroVideo:
-    "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    "https://assets.mixkit.co/videos/25995/25995-720.mp4",
   heroPoster:
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80",
+    "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1920&q=80",
   aboutExterior:
     "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&q=80",
   roomStandard:
